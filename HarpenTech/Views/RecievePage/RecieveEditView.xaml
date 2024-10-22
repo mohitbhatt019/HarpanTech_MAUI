@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<views:ContentPageBase xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:skia="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"
+              xmlns:views="clr-namespace:HarpenTech.Views"
+             x:Class="HarpenTech.Views.RecievePage.RecieveEditView"
+             xmlns:vm="clr-namespace:HarpenTech.ViewModels"
+             x:DataType="vm:RecieveEditViewModel"
+             xmlns:models="clr-namespace:HarpenTech.Models.Container"
+             Shell.FlyoutBehavior="Flyout"
+             >
+
+
+    <Shell.TitleView>
+        <Label Margin="0,0,0,0"  TextColor="#FFFFFF" Text="Recieve Edit View                      " FontSize="14" VerticalOptions="CenterAndExpand"    HorizontalOptions="CenterAndExpand" />
+    </Shell.TitleView>
+
+    <VerticalStackLayout>
+
+        <Grid RowDefinitions="Auto, Auto" ColumnDefinitions=".30*, .70*" Padding="5">
+            <Label  Grid.ColumnSpan="5" x:Name="ContainerNullErrorLabel" TextColor="Red" Margin="0,-6,0,0" IsVisible="False"/>
+            <Label Text="Container No" VerticalOptions="CenterAndExpand"/>
+            <Entry x:Name="ContainerNumber" Placeholder="Containers No"  Text="{Binding ContainerNumber}" WidthRequest="280" Margin="100,0,-260,10" VerticalOptions="CenterAndExpand"/>
+            <Label Grid.ColumnSpan="5"  x:Name="ContainerNoErrorLabel" Text="* Container No Feild Is Required" TextColor="Red" IsVisible="False"/>
+
+        </Grid>
+
+        <Grid RowDefinitions="Auto, Auto"
+            ColumnDefinitions=".20*, .70*" Margin="10,-10,10,10"
+            Padding="5">
+
+            <Label Grid.ColumnSpan="5"  x:Name="CustomerNullErrorLabel" TextColor="Red" Margin="-7,-6,0,0" IsVisible="False"/>
+            <Label Text="Customer"  VerticalOptions="CenterAndExpand"/>
+            <Entry x:Name="Customer" Placeholder="Customer" Text="{Binding Customer}" Grid.Column="1"/>
+            <Label Grid.ColumnSpan="5"  x:Name="CustomerErrorLabel" Text="* Customer No Feild Is Required" TextColor="Red" IsVisible="False"/>
+
+        </Grid>
+
+
+        <VerticalStackLayout Margin="10,-10,10,10">
+            <Label Grid.ColumnSpan="5"  x:Name="RemarksNullErrorLabel" TextColor="Red" IsVisible="False"/>
+            <Label Text="Add remarks" VerticalOptions="FillAndExpand" Margin="10,10,0,0"/>
+            <Editor x:Name="remarksEditor" Text="{Binding Remarks}"   Margin="0,0,0,0" HeightRequest="110" AutoSize="TextChanges" />      
+            <Label x:Name="remarksEditorErrorLabel"  Margin="10,5,10,10" Text="* Remarks should be at least 4 characters long" TextColor="Red" IsVisible="false"/>
+            <Label x:Name="remarksNullErrorLabel"  Margin="10,5,10,10" Text = "* Remarks feild is required " TextColor="Red" IsVisible="false"/>
+
+        </VerticalStackLayout>
+
+        <FlexLayout>
+            <Label x:Name="ImageclickError" TextColor="Red" IsVisible="False"/>
+            <Button Command="{Binding CancelClickCommand}"  Text="Cancel" TextColor="#0000ff"   BackgroundColor="Transparent" CornerRadius="5" WidthRequest="110" Margin="5" HeightRequest="50" HorizontalOptions="Start"/>
+            <Button  Text="Photo" Command="{Binding CameraClickCommand}" TextColor="#0000ff"    BackgroundColor="Transparent" CornerRadius="5" WidthRequest="110" Margin="5" HeightRequest="50" HorizontalOptions="Start"/>
+
+            <Button Clicked="SaveProduct"  Text="Save" TextColor="White"  CornerRadius="5" WidthRequest="110" Margin="5" HeightRequest="50" HorizontalOptions="Start"/>
+        </FlexLayout>
+        <Grid>
+
+            <Button Margin="20,20,0,0" WidthRequest="250" Clicked="DisplayDataClick" Text="Data Display" TextColor="White"  />
+
+        </Grid>
+
+        <!--DatabaseLoadK-->
+        <skia:SKLottieView
+              Source="loadtestf.json"
+              RepeatCount="10"
+              IsVisible="{Binding IsBusy}"
+              IsAnimationEnabled="{Binding IsBusy}"
+              WidthRequest="100"
+              HeightRequest="100"
+              VerticalOptions="Center"
+              HorizontalOptions="Center">
+        </skia:SKLottieView>
+
+    </VerticalStackLayout>
+
+</views:ContentPageBase>

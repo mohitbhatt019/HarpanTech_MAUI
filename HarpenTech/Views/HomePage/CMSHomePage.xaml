@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:skia="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"
+             x:Class="HarpenTech.Views.HomePage.CMSHomePage"
+             xmlns:viewmodels="clr-namespace:HarpenTech.ViewModels"
+             xmlns:views="clr-namespace:HarpenTech.Views;assembly=HarpenTech"
+             x:DataType="viewmodels:HomeViewModel"
+              Shell.FlyoutBehavior="Flyout"               Title="           CMSHomePage"
+
+
+>
+
+
+    <!--<Shell.TitleView>        <Label TextColor="#FFFFFF" Text="CMSHomePage              "  VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />    </Shell.TitleView>-->
+
+    <VerticalStackLayout>
+
+        <FlexLayout >
+            <Button FontSize="13" Text="Recieve" Command="{Binding RecieveCommand}"   WidthRequest="110" Margin="5" HeightRequest="100" HorizontalOptions="Start">
+            </Button>
+            <Button FontSize="13" Text="Dispatch" Command="{Binding DispatchCommand}" WidthRequest="110" HeightRequest="100" Margin="5" HorizontalOptions="Center">
+            </Button>
+
+            <Button FontSize="13" Text="Repair" Command="{Binding RepairCommand}"  WidthRequest="110" HeightRequest="100" Margin="5" HorizontalOptions="Center">
+            </Button>
+
+        </FlexLayout>
+
+        <FlexLayout>
+            <Button FontSize="13"  Text="Logout" TextColor="White" Command="{Binding LogoutCommand}" WidthRequest="110" HeightRequest="100" Margin="5" HorizontalOptions="Center">
+            </Button>
+        </FlexLayout>
+
+        <!-- INDICATOR -->        <skia:SKLottieView
+           Source="loadtest.json"
+           RepeatCount="10"
+           IsVisible="{Binding IsBusy}"
+           IsAnimationEnabled="{Binding IsBusy}"
+           WidthRequest="100"
+           HeightRequest="100"
+           VerticalOptions="Center"
+           HorizontalOptions="Center">
+        </skia:SKLottieView>
+    </VerticalStackLayout>
+</ContentPage>

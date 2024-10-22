@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HarpenTech.Views.Dispatch.DispatchEditView"
+             xmlns:vm="clr-namespace:HarpenTech.ViewModels"
+             x:DataType="vm:DispatchEditViewModel"
+             FlyoutItem.IsVisible="False"
+             Title="        Dispatch Edit View "
+             >
+
+    
+
+    <!--<Shell.TitleView>        <Label TextColor="#FFFFFF" Text="Dispatch Edit              "  VerticalOptions="CenterAndExpand" FontSize="14"   HorizontalOptions="CenterAndExpand"/>    </Shell.TitleView>-->
+    <Shell.BackButtonBehavior>
+
+        <BackButtonBehavior IsVisible="True" IsEnabled="True"  />
+    </Shell.BackButtonBehavior>
+
+    <Grid HeightRequest="500" Margin="20,0,20,0" VerticalOptions="Start" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition  Height="50"  />
+            <RowDefinition  Height="50"  />
+            <RowDefinition  Height="50" />
+            <RowDefinition  Height="50" />
+            <RowDefinition  Height="50" />
+            <RowDefinition  Height="50" />
+            <RowDefinition  Height="50" />
+            <RowDefinition  Height="50"/>
+            <RowDefinition  Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        
+        <!--Customer-->
+        <Label Grid.ColumnSpan="5" Grid.Row="0"  x:Name="CustomerNullErrorLabel" TextColor="Red" Margin="-6,-3,0,0" IsVisible="False"/>
+        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Text="Customer" VerticalOptions="CenterAndExpand" />
+        <Entry Grid.ColumnSpan="2" Text="{Binding Customer}"  Grid.Row="0" Grid.Column="1"  Placeholder="Customer"   VerticalOptions="CenterAndExpand" MinimumWidthRequest="200" />
+
+        <!--BookingReference-->
+        <Label Grid.Row="1" Grid.ColumnSpan="5"  x:Name="BookingReferenceNullErrorLabel" TextColor="Red" Margin="-7,-6,0,0" IsVisible="False"/>
+        <Label Grid.ColumnSpan="3" Grid.Row="1" Grid.Column="0" Text="Booking Ref"  VerticalOptions="CenterAndExpand"/>
+        <Entry Grid.ColumnSpan="2" Text="{Binding BookingReference}" Keyboard="Numeric" Grid.Row="1" Grid.Column="1" Placeholder="Booking Ref" VerticalOptions="CenterAndExpand"/>
+
+        <!--ContainerNumber-->
+        <Label Grid.Row="2" Grid.ColumnSpan="5"  x:Name="ContainerNumberNullErrorLabel" TextColor="Red" Margin="-7,-6,0,0" IsVisible="False"/>
+        <Label Grid.ColumnSpan="3" Grid.Row="2" Grid.Column="0" Text="Container No"  VerticalOptions="CenterAndExpand"/>
+        <Entry Grid.ColumnSpan="2" Grid.Row="2" Text="{Binding ContainerNumber}" Keyboard="Numeric" Grid.Column="1" Placeholder="Container No" VerticalOptions="CenterAndExpand"/>
+
+        <!--Iso-->
+        <Label Grid.Row="3" Grid.ColumnSpan="5"  x:Name="IsoNullErrorLabel" TextColor="Red" Margin="-7,-6,0,0" IsVisible="False"/>
+        <Label Grid.ColumnSpan="3" Grid.Row="3" Grid.Column="0" Text="ISO"  VerticalOptions="CenterAndExpand"/>
+        <Entry Grid.ColumnSpan="2" Grid.Row="3" Text="{Binding Iso}" Keyboard="Numeric" Grid.Column="1" Placeholder="Container No" VerticalOptions="CenterAndExpand"/>
+
+        <!--TempInstruction-->
+        <Label Grid.Row="4" Grid.ColumnSpan="5"  x:Name="TempInstructionNullErrorLabel" TextColor="Red" Margin="-7,-7,0,0" IsVisible="False"/>
+        <Label Grid.ColumnSpan="3" Grid.Row="4" Grid.Column="0" Text="TempInstruction"  VerticalOptions="CenterAndExpand"/>
+        <Entry Grid.ColumnSpan="2" Grid.Row="4" Text="{Binding TempInstruction}" Keyboard="Numeric" Grid.Column="1" Placeholder="Temp Instruction" VerticalOptions="CenterAndExpand"/>
+
+        <!--Temp-->
+        <Label  Grid.Row="5" Grid.ColumnSpan="5"  x:Name="TempInDegreeCelciusNullErrorLabel" TextColor="Red" Margin="-7,-7,0,0" IsVisible="False"/>
+        <Label Grid.ColumnSpan="3" Grid.Row="5" Grid.Column="0" Text="Temp"  VerticalOptions="CenterAndExpand"/>
+        <Entry Grid.ColumnSpan="2" Grid.Row="5" Text="{Binding TempInDegreeCelcius}" Keyboard="Numeric" Grid.Column="1" Placeholder="Temp" VerticalOptions="CenterAndExpand"/>
+
+        <!--Seal1-->
+        <Label  Grid.Row="6" Grid.ColumnSpan="5"  x:Name="Seal1NullErrorLabel" TextColor="Red" Margin="-7,-7,0,0" IsVisible="False"/>
+        <Label Grid.ColumnSpan="3" Grid.Row="6" Grid.Column="0" Text="Seal1"  VerticalOptions="CenterAndExpand"/>
+        <Entry Grid.ColumnSpan="2" Grid.Row="6" Text="{Binding Seal1}" Grid.Column="1" Placeholder="Seal1" VerticalOptions="CenterAndExpand"/>
+
+        <!--Seal2-->
+        <Label Grid.Row="7" Grid.ColumnSpan="5"  x:Name="Seal2NullErrorLabel" TextColor="Red" Margin="-7,-7,0,0" IsVisible="False"/>
+        <Label Grid.ColumnSpan="3"  Grid.Row="7" Grid.Column="0" Text="Seal2"  VerticalOptions="CenterAndExpand"/>
+        <Entry Grid.ColumnSpan="2" Grid.Row="7" Text="{Binding Seal2}" Grid.Column="1" Placeholder="Seal2" VerticalOptions="CenterAndExpand"/>
+
+        <!--Database Button-->
+        <Button WidthRequest="110" Grid.ColumnSpan="2" Clicked="DisplayDataClick"  Text="Database"  Grid.Row="10" Grid.Column="0"  HeightRequest="50" HorizontalOptions="Start"/>
+
+        <!--Cancel Button-->
+        <Button WidthRequest="110" BackgroundColor="Transparent" Grid.ColumnSpan="2"  Grid.Row="10" Grid.Column="1"  Text="Cancel" Command="{Binding CancelClickCommand}" TextColor="#0000ff" HeightRequest="50" HorizontalOptions="Start"/>
+
+        <!--Save Button-->
+        <Button WidthRequest="110" Grid.ColumnSpan="2"  Grid.Row="10" Grid.Column="2" Text="Save" Clicked="SaveProduct" BackgroundColor="#0000ff" HeightRequest="50" HorizontalOptions="Start"/>
+
+    </Grid>
+
+</ContentPage>

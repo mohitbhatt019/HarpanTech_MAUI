@@ -1,0 +1,114 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HarpenTech.Views.RecievePage.RecieveView"
+             Title="Property Details">
+
+    <ScrollView>
+        <VerticalStackLayout Margin="8">
+
+            <!-- Property Images -->
+            <Label Text="Property Images" FontAttributes="Bold" FontSize="Medium"/>
+            <CollectionView ItemsSource="{Binding Root.data.propertyListing[0].property_images}" 
+                            HorizontalOptions="FillAndExpand"
+                            HeightRequest="200"
+                            Margin="0,0,0,10">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Image Source="{Binding image_url}" Aspect="AspectFill" WidthRequest="200" HeightRequest="200"/>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!-- Property Details -->
+            <Label Text="Property Details" FontAttributes="Bold" FontSize="Large" Margin="0,10,0,5"/>
+
+            <!-- Rent and Brokerage -->
+            <Label Text="Rent:" FontAttributes="Bold"/>
+            <Label Text="{Binding Root.data.propertyListing[0].rent, StringFormat='{0:C}'}" />
+
+            <Label Text="Brokerage:" FontAttributes="Bold"/>
+            <Label Text="{Binding Root.data.propertyListing[0].brokerage, StringFormat='{0:C}'}" />
+
+            <!-- Address Details -->
+            <Label Text="Address:" FontAttributes="Bold"/>
+            <Label Text="{Binding Root.data.propertyListing[0].address}" FontSize="Small"/>
+
+            <Label Text="Full Address:" FontAttributes="Bold"/>
+            <Label Text="{Binding Root.data.propertyListing[0].full_address}" FontSize="Small"/>
+
+            <!-- Latitude and Longitude -->
+            <Label Text="Location:" FontAttributes="Bold"/>
+            <Label Text="Latitude: {Binding Root.data.propertyListing[0].lati}" FontSize="Small"/>
+            <Label Text="Longitude: {Binding Root.data.propertyListing[0].longi}" FontSize="Small"/>
+
+            <!-- Description, Bedrooms, Washrooms, Furnished, Parking -->
+            <Label Text="Description:" FontAttributes="Bold"/>
+            <Label Text="{Binding Root.data.propertyListing[0].description}" FontSize="Small"/>
+
+            <Label Text="Bedrooms:" FontAttributes="Bold"/>
+            <Label Text="{Binding Root.data.propertyListing[0].bedroom}" FontSize="Small"/>
+
+            <Label Text="Washrooms:" FontAttributes="Bold"/>
+            <Label Text="{Binding Root.data.propertyListing[0].washroom}" FontSize="Small"/>
+
+            <Label Text="Furnished Type:" FontAttributes="Bold"/>
+            <Label Text="{Binding Root.data.propertyListing[0].furnished_id}" FontSize="Small"/>
+
+            <Label Text="Car Parking:" FontAttributes="Bold"/>
+            <Label Text="{Binding Root.data.propertyListing[0].car_parking}" FontSize="Small"/>
+
+            <Label Text="Floor:" FontAttributes="Bold"/>
+            <Label Text="{Binding Root.data.propertyListing[0].floor}" FontSize="Small"/>
+
+            <!-- User Details -->
+            <Label Text="User Details" FontAttributes="Bold" FontSize="Large" Margin="0,10,0,5"/>
+
+            <Label Text="Name:" FontAttributes="Bold"/>
+            <Label Text="{Binding Root.data.propertyListing[0].user_detail.name}" FontSize="Small"/>
+
+            <Label Text="Phone Number:" FontAttributes="Bold"/>
+            <Label Text="{Binding Root.data.propertyListing[0].user_detail.phone_number}" FontSize="Small"/>
+
+            <Label Text="User Type:" FontAttributes="Bold"/>
+            <Label Text="{Binding Root.data.propertyListing[0].user_detail.user_type}" FontSize="Small"/>
+
+            <Label Text="Gender:" FontAttributes="Bold"/>
+            <Label Text="{Binding Root.data.propertyListing[0].user_detail.gender}" FontSize="Small"/>
+
+            <Label Text="User Address:" FontAttributes="Bold"/>
+            <Label Text="{Binding Root.data.propertyListing[0].user_detail.address}" FontSize="Small"/>
+
+            <!-- Property Type -->
+            <Label Text="Property Type" FontAttributes="Bold" FontSize="Large" Margin="0,10,0,5"/>
+
+            <Label Text="Type:" FontAttributes="Bold"/>
+            <Label Text="{Binding Root.data.propertyListing[0].property_type.name}" FontSize="Small"/>
+
+            <!-- Extra Property Info -->
+            <Label Text="Extra Information" FontAttributes="Bold" FontSize="Large" Margin="0,10,0,5"/>
+
+            <Label Text="Living Couple Allowed:" FontAttributes="Bold"/>
+            <Label Text="{Binding Root.data.propertyListing[0].property_extrainfo.livin_couple_allowed}" FontSize="Small"/>
+
+            <Label Text="Fully Independent:" FontAttributes="Bold"/>
+            <Label Text="{Binding Root.data.propertyListing[0].property_extrainfo.fully_independent}" FontSize="Small"/>
+
+            <Label Text="Student Allowed:" FontAttributes="Bold"/>
+            <Label Text="{Binding Root.data.propertyListing[0].property_extrainfo.student_allowed}" FontSize="Small"/>
+
+            <Label Text="Owner Free:" FontAttributes="Bold"/>
+            <Label Text="{Binding Root.data.propertyListing[0].property_extrainfo.owner_free}" FontSize="Small"/>
+
+            <Label Text="Rent Negotiable:" FontAttributes="Bold"/>
+            <Label Text="{Binding Root.data.propertyListing[0].property_extrainfo.rent_negotiable}" FontSize="Small"/>
+
+            <Label Text="Gated Society:" FontAttributes="Bold"/>
+            <Label Text="{Binding Root.data.propertyListing[0].property_extrainfo.gated_society}" FontSize="Small"/>
+
+            <!-- Video Link -->
+            <Label Text="Video Link:" FontAttributes="Bold"/>
+            <Label Text="{Binding Root.data.propertyListing[0].property_extrainfo.video_link}" FontSize="Small"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

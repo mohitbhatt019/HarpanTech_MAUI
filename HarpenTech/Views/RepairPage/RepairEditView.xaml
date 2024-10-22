@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HarpenTech.Views.RepairPage.RepairEditView"
+             xmlns:vm="clr-namespace:HarpenTech.ViewModels"
+             x:DataType="vm:RepairEditViewModel"
+                Title="       RepairEditViewModel"
+>
+
+
+    <!--<Shell.TitleView>        <Label TextColor="#FFFFFF" Text="Repair Edit View              "  VerticalOptions="CenterAndExpand" FontSize="14"   HorizontalOptions="CenterAndExpand"/>    </Shell.TitleView>-->
+    <ScrollView>
+        <VerticalStackLayout>
+            <Grid RowDefinitions="50, Auto, *, *"
+          ColumnDefinitions="250, .30* , .30*"
+          Padding="5"
+          ColumnSpacing="10">
+                
+                <Entry Placeholder="Display Container No"  TextColor="Black" Keyboard="Chat" Grid.Row="0"/>
+
+                <Entry Placeholder="Door"  VerticalOptions="Start" HorizontalOptions="Center" WidthRequest="50" Margin="380,10,50,0" />
+
+             
+                <Button ZIndex="100" BackgroundColor="Transparent" Command="{Binding CameraClickCommand}"  WidthRequest="50"   Padding="100,100,100,100" Margin="150,10,-300,0"/>
+
+                <Image Source="camera4.png" Margin="150,10,-300,0"  WidthRequest="50" HeightRequest="45" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Center"></Image>
+            </Grid>
+
+
+            <Grid>
+                <CheckBox Margin="0,0,330,5" WidthRequest="100" IsChecked="{Binding RepairNeeded}"/>
+                <Label Text="No repair needed" VerticalOptions="Center" HorizontalOptions="Center" FontAttributes="Bold" TextColor="Black" Margin="-450,-4,-300,0"  />
+            </Grid>
+
+
+
+            <Grid>
+                <CheckBox Margin="0,0,330,5" WidthRequest="100" IsChecked="{Binding Major}"/>
+                <Label Text="Major" VerticalOptions="Center" HorizontalOptions="Center" FontAttributes="Bold" 
+                TextColor="Black" Margin="-520,-4,-300,0"  />
+            </Grid>
+
+
+
+            <Grid>
+                <CheckBox Margin="0,0,330,5" WidthRequest="100" IsChecked="{Binding Wash}"/>
+                <Label Text="Wash" VerticalOptions="Center" HorizontalOptions="Center" FontAttributes="Bold" 
+                TextColor="Black" Margin="-520,-4,-300,0"  />
+            </Grid>
+
+
+
+            <Grid>
+                <CheckBox Margin="0,0,330,5" WidthRequest="100" IsChecked="{Binding WasteMaterial}"/>
+                <Label Text="Waste Material" VerticalOptions="Center" HorizontalOptions="Center" 
+                FontAttributes="Bold" TextColor="Black" Margin="-460,-4,-300,0"  />
+            </Grid>
+
+
+
+            <Grid>
+                <CheckBox Margin="0,0,330,5" WidthRequest="100" IsChecked="{Binding Gasket}"/>
+                <Label Text="Gasket" VerticalOptions="Center" HorizontalOptions="Center" FontAttributes="Bold" 
+                TextColor="Black" Margin="-520,-4,-300,0"  />
+            </Grid>
+
+            <Grid>
+                <CheckBox Margin="0,0,330,5" WidthRequest="100" IsChecked="{Binding CorrosionPinhole}"/>
+                <Label Text="Corrosion Pinhole" VerticalOptions="Center" HorizontalOptions="Center" FontAttributes="Bold" TextColor="Black" Margin="-450,-4,-300,0"  />
+            </Grid>
+
+            <Grid>
+                <CheckBox Margin="0,0,330,5" WidthRequest="100" IsChecked="{Binding Cut}"/>
+                <Label Text="Cut" VerticalOptions="Center" HorizontalOptions="Center" FontAttributes="Bold" 
+                TextColor="Black" Margin="-520,-4,-300,0"  />
+            </Grid>
+
+            <Grid>
+                <CheckBox Margin="0,0,330,5" WidthRequest="100" IsChecked="{Binding Dent}"/>
+                <Label Text="Dent" VerticalOptions="Center" HorizontalOptions="Center" FontAttributes="Bold"
+                TextColor="Black" Margin="-520,-4,-300,0"  />
+            </Grid>
+
+            <Grid>
+                <CheckBox Margin="0,0,330,5" WidthRequest="100" IsChecked="{Binding BentLocking}"/>
+                <Label Text="Bent Locking" VerticalOptions="Center" HorizontalOptions="Center"
+                FontAttributes="Bold" TextColor="Black" Margin="-465,-4,-300,0"  />
+            </Grid>
+
+            <Grid>
+                <CheckBox Margin="0,0,330,5" WidthRequest="100" IsChecked="{Binding FloorLoose}"/>
+                <Label Text="Floor lose" VerticalOptions="Center" HorizontalOptions="Center" 
+                FontAttributes="Bold" TextColor="Black" Margin="-479,-4,-300,0"  />
+            </Grid>
+
+            <Grid>
+                <CheckBox Margin="0,0,330,5" WidthRequest="100" IsChecked="{Binding FloorDamageFloorDelam}"/>
+                <Label Text="Floor damage Floor Delam" VerticalOptions="Center" HorizontalOptions="Center" 
+                FontAttributes="Bold" TextColor="Black" Margin="-390,-4,-300,0"  />
+            </Grid>
+
+            <Grid>
+                <CheckBox Margin="0,0,330,5" WidthRequest="100" IsChecked="{Binding UnderStructureFloor}"/>
+                <Label Text="Under structure Floor" VerticalOptions="Center" HorizontalOptions="Center" 
+                FontAttributes="Bold" TextColor="Black" Margin="-420,-4,-300,0"  />
+            </Grid>
+
+            <Button Text="Save" Command="{Binding SaveClickCommand}" WidthRequest="500"/>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

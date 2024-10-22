@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<views:ContentPageBase xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:HarpenTech.Views"
+             xmlns:skia="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"
+             x:Class="HarpenTech.Views.datascreen.ReceieveViewData"
+             xmlns:vm="clr-namespace:HarpenTech.ViewModels"
+             x:DataType="vm:RecieveEditViewModel"
+             xmlns:models="clr-namespace:HarpenTech.Models.Container"
+             >
+
+    <Shell.TitleView>        <Label Margin="0,0,0,0"  TextColor="#FFFFFF" Text="Sqlite Database                      " FontSize="14" VerticalOptions="CenterAndExpand"    HorizontalOptions="CenterAndExpand" />    </Shell.TitleView>
+
+
+    <ScrollView>
+        <VerticalStackLayout>
+
+            <!--DatabaseLoadK-->            <skia:SKLottieView
+                  Source="loadtest.json"
+                 RepeatCount="10"
+                  IsVisible="{Binding IsBusy}"
+                  IsAnimationEnabled="{Binding IsBusy}"
+                WidthRequest="100"
+                HeightRequest="100"
+                VerticalOptions="Center"
+                HorizontalOptions="Center">
+
+            </skia:SKLottieView>
+
+            <CollectionView ItemsSource="{Binding Products}" IsVisible="True">
+
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout ItemSpacing="10" Orientation="Vertical"/>
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:ContainerReciever">
+                        <Grid Margin="20,10,0,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+
+                            <Label Grid.Row="1" Grid.Column="0" Text="Customer:"/>
+                            <Label Grid.Row="1" Margin="10,0,0,0" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Customer}" FontAttributes="Bold"/>
+
+                            <Label Grid.Row="2" Grid.Column="0" Text="Remarks:"/>
+                            <Label Grid.Row="2" Margin="10,0,0,0" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Remarks}" FontAttributes="Bold"/>
+
+                            <Label Grid.Row="3" Grid.Column="0" Text="Container No:"/>
+                            <Label Grid.Row="3"  Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding ContainerNo}" FontAttributes="Bold"/>
+
+                            <Label Grid.Row="4" Grid.Column="0" Text="ContainerRecieverId:"/>
+                            <Label Grid.Row="4" Margin="10,0,0,0" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding ContainerRecieverId}" FontAttributes="Bold"/>
+
+                            <Label Grid.Row="5" Grid.Column="0" Text="Title:"/>
+                            <Label Grid.Row="5" Margin="10,0,0,0" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Title}" FontAttributes="Bold"/>
+
+                            <Label Grid.Row="6" Grid.Column="0" Text="IsComplete:"/>
+                            <Label Grid.Row="6" Margin="10,0,0,0" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding IsComplete}" FontAttributes="Bold"/>
+
+                            <Label Grid.Row="7" Grid.Column="0" Text="Id:"/>
+                            <Label Grid.Row="7" Margin="-50,0,0,0" Grid.Column="1" Grid.ColumnSpan="2" FontSize="Small" Text="{Binding Id}" FontAttributes="Bold"/>
+
+                            <Label Grid.Row="8" Grid.Column="0" Text="Deleted:"/>
+                            <Label Grid.Row="8" Margin="10,0,0,0" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Deleted}" FontAttributes="Bold"/>
+
+                            <Label Grid.Row="9" Grid.Column="0" Text="UpdatedAt:"/>
+                            <Label Grid.Row="9" Margin="10,0,0,0" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding UpdatedAt}" FontAttributes="Bold"/>
+
+                            <Label Grid.Row="10" Grid.Column="0" Text="Container No:"/>
+                            <Label Grid.Row="10"  Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding ContainerNo}" FontAttributes="Bold"/>
+
+
+                            <Label Grid.Row="11" Grid.Column="0" Text=" UpdateTime In String:"/>
+                            <Label Grid.Row="11" Grid.Column="2" Text="{Binding UpdatedAtInString}" Margin="-80,0,0,0"/>
+
+
+                            <Label Grid.Row="12" Text="Delete:"/>
+                            <Button CommandParameter="{Binding ContainerRecieverId}" Command="{Binding Source={RelativeSource AncestorType={x:Type vm:RecieveEditViewModel}}, Path=DeleteProductCommand}"
+                         Grid.Row="13" Margin="-100,-40,0,0" Background="Transparent" Grid.Column="1" WidthRequest="180" Text="Click here" TextColor="Blue" HeightRequest="40" FontSize="Small" FontAttributes="Bold"/>
+
+
+                            <Label Text="" Grid.Row="14" BackgroundColor="Black"  />
+                            <Label Text="" Grid.Row="14" BackgroundColor="Black" Grid.Column="1"  />
+                            <Label Text="" Grid.Row="14" BackgroundColor="Black" Grid.Column="2"  />
+
+                        </Grid>
+
+                    </DataTemplate>
+
+                </CollectionView.ItemTemplate>
+
+
+                <CollectionView.EmptyView>
+
+                    <ContentView>
+
+                        <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                            <Label Text="No Products Found" FontSize="18" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                            <Label Text="Try creating a container from the form previous screen"/>
+
+                        </VerticalStackLayout>
+                    </ContentView>
+                </CollectionView.EmptyView>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</views:ContentPageBase>

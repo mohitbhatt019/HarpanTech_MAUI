@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HarpenTech.Views.DatabaseScreen.DispatchViewData"
+             xmlns:vm="clr-namespace:HarpenTech.ViewModels"
+             x:DataType="vm:DispatchEditViewModel"
+             xmlns:models="clr-namespace:HarpenTech.Models.Dispatch"
+             >
+
+    <Shell.TitleView>        <Label Margin="0,0,0,0"  TextColor="#FFFFFF" Text="Sqlite Database                      " FontSize="14" VerticalOptions="CenterAndExpand"    HorizontalOptions="CenterAndExpand" />    </Shell.TitleView>
+
+
+    <Grid>
+
+        <CollectionView ItemsSource="{Binding Products}" IsVisible="True">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout ItemSpacing="10" Orientation="Vertical"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:DispatchModel">
+                    <Grid Margin="20,10,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Row="1" Grid.Column="0" Text="Id:"/>
+                        <Label Grid.Row="1" Margin="10,0,0,0" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Id}" FontAttributes="Bold"/>
+
+
+
+                        <Label Grid.Row="2" Grid.Column="0" Text="Customer:"/>
+                        <Label Grid.Row="2" Margin="10,0,0,0" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Customer}" FontAttributes="Bold"/>
+
+
+                        <Label Grid.Row="3" Grid.Column="0" Text="BookingReference:"/>
+                        <Label Grid.Row="3" Margin="10,0,0,0" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding BookingReference}" FontAttributes="Bold"/>
+
+                        <Label Grid.Row="4" Grid.Column="0" Text="ContainerNo:"/>
+                        <Label Grid.Row="4" Margin="10,0,0,0" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding ContainerNo}" FontAttributes="Bold"/>
+
+
+                        <Label Grid.Row="5" Grid.Column="0" Text="ISO:"/>
+                        <Label Grid.Row="5" Margin="10,0,0,0" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding ISO}" FontAttributes="Bold"/>
+
+
+                        <Label Grid.Row="6" Grid.Column="0" Text="TempInstruction:"/>
+                        <Label Grid.Row="6" Margin="10,0,0,0" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding TempInstruction}" FontAttributes="Bold"/>
+
+
+                        <Label Grid.Row="7" Grid.Column="0" Text="Temperature:"/>
+                        <Label Grid.Row="7" Margin="10,0,0,0" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Temp}" FontAttributes="Bold"/>
+
+
+                        <Label Grid.Row="8" Grid.Column="0" Text="Seal1:"/>
+                        <Label Grid.Row="8" Margin="10,0,0,0" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Seal1}" FontAttributes="Bold"/>
+
+
+                        <Label Grid.Row="9" Grid.Column="0" Text="Seal2:"/>
+                        <Label Grid.Row="9" Margin="10,0,0,0" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Seal2}" FontAttributes="Bold"/>
+
+                        <Label Grid.Row="10" Grid.Column="0" Text="Delete:"/>
+                        <Button  CommandParameter="{Binding Id}" Command="{Binding Source={RelativeSource AncestorType={x:Type vm:DispatchEditViewModel}}, Path=DeleteProductCommand}"
+                         Grid.Row="10" Margin="-70,-10,0,0" Background="Transparent" Grid.Column="1" WidthRequest="180" Text="Click here" TextColor="Blue" HeightRequest="40" FontSize="Small" FontAttributes="Bold"/>
+
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            
+            
+            <CollectionView.EmptyView>
+                <ContentView>
+                    <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                        <Label Text="No Products Found" FontSize="18" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                        <Label Text="Try creating a container from the form previous screen"/>
+
+                    </VerticalStackLayout>
+                </ContentView>
+            </CollectionView.EmptyView>
+        </CollectionView>
+    </Grid>
+
+</ContentPage>

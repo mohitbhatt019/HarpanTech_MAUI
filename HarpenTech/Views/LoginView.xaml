@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:ContentPageBase xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+                x:Class="HarpenTech.Views.LoginView"
+                xmlns:views="clr-namespace:HarpenTech.Views"
+                xmlns:skia="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"
+                xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+                xmlns:viewmodels="clr-namespace:HarpenTech.ViewModels"
+                x:DataType="viewmodels:LoginViewModel"
+                Shell.FlyoutBehavior="Disabled"
+                Shell.NavBarIsVisible="True"
+                Shell.TabBarIsVisible="False"
+                Shell.BackgroundColor="#0000FF"              
+                xmlns:mct2="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui"
+                       Title="                            Login"
+                       >
+
+
+    <ContentPage.Behaviors>
+        <mct2:StatusBarBehavior StatusBarColor="#0000FF" x:Name="statusbar" />
+    </ContentPage.Behaviors>
+
+
+
+
+    <ContentPage.Resources>
+        <Color x:Key="BlueColor">#0000FF</Color>
+        <Style x:Key="InvalidEntryStyle" TargetType="Entry">
+            <Setter Property="TextColor" Value="Red" />
+        </Style>
+        <Style x:Key="ValidEntryStyle" TargetType="Entry">
+            <Setter Property="TextColor" Value="Green" />
+        </Style>
+
+        <!--Password-->
+        <Style x:Key="InvalidPasswordStyle" TargetType="Entry">
+            <Setter Property="TextColor" Value="Red" />
+        </Style>
+        <Style x:Key="ValidPasswordStyle" TargetType="Entry">
+            <Setter Property="TextColor" Value="Green" />
+        </Style>
+    </ContentPage.Resources>
+
+
+
+
+    <VerticalStackLayout >
+
+        <StackLayout Orientation="Vertical"  Margin="0,30,0,0">
+            <Label ScaleX="0.9" ScaleY="0.9" FontSize="12" Text="CMS Mobile" TextColor="Gray"  HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"  ></Label>
+
+            <StackLayout Orientation="Vertical" >
+                <Label ScaleX="0.9" ScaleY="0.9" HorizontalOptions="CenterAndExpand"  FontSize="12"  TextColor="Gray" Text="{Binding  FormattedAppVersion}" />
+
+            </StackLayout>
+
+            <StackLayout Orientation="Vertical"  >
+                <Label ScaleX="0.9" ScaleY="0.9" FontSize="12" HorizontalOptions="CenterAndExpand"  Text="{Binding FormattedReleaseDate}"  TextColor="Gray"  />
+            </StackLayout>
+
+            <!--MainDb And Depot-->
+            <StackLayout Orientation="Vertical">
+
+                <Label ScaleX="0.9" ScaleY="0.9" HorizontalOptions="CenterAndExpand" TextColor="Gray" FontSize="12"  Text="{Binding MainDb}"  />
+            </StackLayout>
+
+        </StackLayout>
+
+
+        <Grid RowSpacing="5"  >
+            <Grid.RowDefinitions  >
+                <RowDefinition Height="20" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="20" />
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+
+
+
+            <!--UserNameEntry With Label-->
+
+            <Label IsVisible="false" Grid.Row="2" Grid.Column="1"  Grid.ColumnSpan="3" x:Name="UserLabel" FontSize="10" Text="Username"/>
+
+            <Entry Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="8" x:Name="username"   Text="{Binding UserName}" Placeholder="Username" Focused="UserNameLabelFocus" Unfocused="UserNameLabelUnFocus" >
+                <Entry.Behaviors>
+                    <toolkit:TextValidationBehavior
+                        x:Name="NameValidator"
+                        InvalidStyle="{StaticResource InvalidPasswordStyle}"
+                        ValidStyle="{StaticResource ValidPasswordStyle}"
+                        Flags="ValidateOnValueChanged"
+                        MinimumLength="3"
+                        MaximumLength="8"/>
+
+                </Entry.Behaviors>
+            </Entry >
+            <Label Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3"  x:Name="UsernameErrorLabel" TextColor="Red" IsVisible="False"/>
+            <Label Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" x:Name="UsernameNullErrorLabel" TextColor="Red" IsVisible="False"/>
+
+
+            <!--PasswordEntry With Label-->
+
+            <Label Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" FontSize="10" IsVisible="false" x:Name="PasswordLabel"
+             Text="Password"/>
+            <Entry Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="8" x:Name="password"    Placeholder="Password" Focused="PasswordLabelFocus" Unfocused="PasswordLabelUnFocus" 
+                    IsPassword="True" Text="{Binding Password}">
+
+                <Entry.Behaviors>
+                    <toolkit:TextValidationBehavior
+                         x:Name="PasswordValidator"
+                         InvalidStyle="{StaticResource InvalidEntryStyle}"
+                         ValidStyle="{StaticResource ValidEntryStyle}"
+                         Flags="ValidateOnValueChanged"
+                         RegexPattern="^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$"
+                         MinimumLength="4"
+                         MaximumLength="15" />
+
+                </Entry.Behaviors>
+
+            </Entry>
+            <Label x:Name="PasswordErrorLabel" TextColor="Red" IsVisible="False"/>
+            <Label x:Name="PasswordNullErrorLabel" TextColor="Red" IsVisible="False"/>
+
+            <!--UserName and Password ClearTextButton-->
+            <ImageButton x:Name="UserNameClearText"  Clicked="UserClearTextEditing" IsVisible="false"  BackgroundColor="Transparent"   Grid.Row="3" Grid.Column="8"  VerticalOptions="Center" Margin="0,0,30,0" Source="close.png"   Grid.ColumnSpan="2" WidthRequest="20" HeightRequest="15"  />
+            <ImageButton  x:Name="PasswordClearText" Clicked="PasswordClearTextEditing"  IsVisible="false"  BackgroundColor="Transparent"   Grid.Row="5" VerticalOptions="Center"  Source="close.png" Margin="0,0,30,0"  Grid.Column="8" Grid.ColumnSpan="2" WidthRequest="20" HeightRequest="15"  />
+
+            <!--Peek Passowrd Button-->
+            <ImageButton Margin="0,0,10,0" Clicked="PeekPasswordClick" x:Name="PeekPassowordTextVisible" IsVisible="false"  BackgroundColor="Transparent"   Grid.Row="5" VerticalOptions="Center"  Source="eyeshape.png"  Grid.Column="7" Grid.ColumnSpan="2" WidthRequest="20" HeightRequest="35"  />
+            <ImageButton  Margin="0,0,10,0" Clicked="PeekPasswordClick" x:Name="PeekPassowordTextHide" IsVisible="false"  BackgroundColor="Transparent"   Grid.Row="5" VerticalOptions="Center"  Source="crosseye.png"  Grid.Column="7" Grid.ColumnSpan="2" WidthRequest="20" HeightRequest="35"  />
+
+
+
+
+
+            <!--LOGIN_CLICK_BUTTON-->
+            <Button  Margin="8"
+                        Grid.Row="6"
+                        Grid.Column="8"
+                        Clicked="LoginClick"
+                        WidthRequest="100"                   
+                        Text="Login"
+                        VerticalOptions="End"
+                        HorizontalOptions="EndAndExpand" />
+
+            <Button  Text="Cancel" Grid.Row="6" Grid.Column="4" Clicked="CancelClick"  TextColor="#0000FF"  BackgroundColor="Transparent" WidthRequest="100" />
+
+        </Grid>
+
+
+
+        <!-- INDICATOR -->
+        <skia:SKLottieView
+              Source="fast.json"
+              RepeatCount="10"
+              IsVisible="{Binding IsBusy}"
+              IsAnimationEnabled="{Binding IsBusy}"
+              WidthRequest="100"
+              HeightRequest="100"
+              VerticalOptions="Center"
+              HorizontalOptions="Center">
+
+        </skia:SKLottieView>
+
+    </VerticalStackLayout>
+
+
+
+</views:ContentPageBase>
